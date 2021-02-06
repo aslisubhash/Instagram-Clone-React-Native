@@ -20,6 +20,7 @@ import { SET_USER, IS_AUTHENTICATED } from "./action/action.types";
 
 import database from "@react-native-firebase/database";
 import EmptyContainer from "./components/EmptyContainer";
+import { State } from "react-native-gesture-handler";
 
 const Stack = createStackNavigator();
 
@@ -58,11 +59,36 @@ const App =(authState)=>{
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged)
     return subscriber;
   },[])
+
+  if (authState.loading) {
+    return <EmptyContainer/>
+  }
   return(
-    <Text>
-      Hello App.js
-    </Text>
+    <>
+    <NavigationContainer>
+      <Stack.Navigator
+      screenOptions={{
+        header: (props)=><CustomHeader {...props} />
+      }}
+      >
+        {authState.isAuthenticated?(
+          <>
+          <Stack.Screen name="Home" component={Home}/>
+          <Stack.Screen name="AddPost" component={AddPost}/>
+          </>
+        ):(
+          <>
+          <Stack.Screen name="SignIn" component={SignIn}/>
+          <Stack.Screen name="SignUp" component={SignUp}/>
+          </>
+        )}
+      </Stack.Navigator>
+    </NavigationContainer>
+    </>
   )
 }
 
-export default App
+const mapStateToProps = () => {
+  authState : State.auth
+}
+export default connect(mapStateToProps)(App)
