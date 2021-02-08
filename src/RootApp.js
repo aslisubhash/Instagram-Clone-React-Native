@@ -5,10 +5,11 @@ import {Provider} from "react-redux"
 import App from "./App"
 
 
-const RootApp =()=>{
+const RootApp = ()=> {
+    return (
 <Provider store={store}>
     <App/>
-</Provider>
+</Provider>)
 }
 
 export default RootApp

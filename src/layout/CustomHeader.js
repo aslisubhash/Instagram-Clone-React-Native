@@ -1,7 +1,4 @@
 import  React from "react";
-
-import { StyleSheet } from "react-native";
-
 import { 
     Body,
     Header,
@@ -10,14 +7,13 @@ import {
     Icon,
     Title,
     Text
- } from "native-base"
+} from "native-base"
 
- import { connect } from "react-redux";
+import { connect } from "react-redux";
 
- import propTypes from "prop-types";
+import propTypes from "prop-types";
 
- import { signOut } from "../src/action/auth";
-import { State } from "react-native-gesture-handler";
+import {signOut} from '../action/auth'
 
 
 const CustomHeader = ({signOut, authState, navigation}) => {

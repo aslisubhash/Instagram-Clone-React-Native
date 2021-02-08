@@ -2,12 +2,13 @@ import  React from "react";
 
 import { StyleSheet, Text } from "react-native";
 
-const SignIn = () => {
+
+const Home = () => {
     return(
         <>
-        <Text>Hello from SignIn</Text>
+        <Text>Hello from Home</Text>
         </>
     )
 }
 
-export default SignIn;
+export default Home;
