@@ -26,6 +26,13 @@ const signUp = ({signUp}) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [instaUsername, setInstaUsername] = useState("")
+    const [country, setCountry] = useState("")
+    const [bio, setBio] = useState("")
+    const [image, setImage] = useState(
+        "https://firebase.google.com/downloads/brand-guidelines/PNG/logo-logomark.png"
+    )
+    const [imageUploading, setImageUploading] = useState(false)
+    const [uploadStatus, setUploadStatus] = useState(null)
 
     return(
         <>
