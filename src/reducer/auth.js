@@ -1,4 +1,4 @@
-import  {State } from "react-native-gesture-handler";
+// import   {State } from "react-native-gesture-handler";
 import { SET_USER, IS_AUTHENTICATED } from "../action/action.types";
 
 const initialState = {
@@ -11,14 +11,14 @@ export default (state=initialState, action)=>{
     switch (action.type) {
         case SET_USER:
             return {
-                ...State,
+                ...state,
                 user: action.payload,
                 loading: false
             }
         case IS_AUTHENTICATED:
             return {
-                ...State,
-                IS_AUTHENTICATED: action.payload,
+                ...state,
+               isAuthenticated: action.payload,
                 loading: false
             }
 

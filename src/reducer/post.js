@@ -1,4 +1,4 @@
-import { ActionSheet } from "native-base";
+// import { ActionSheet } from "native-base";
 import { SET_POST, ERROR_POST } from "../action/action.types";
 
 const initialState = {
@@ -13,7 +13,7 @@ export default (state=initialState, action) =>{
         case SET_POST:
             return {
                 ...state,
-                post: action.payload,
+                posts: action.payload,
                 loading: false,
                 error: false
             }
