@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, ScrollView, Image} from 'react-native';
 import {
   Container,
@@ -28,7 +28,6 @@ import { connect } from "react-redux";
 import propTypes from "prop-types";
 import shortid from "shortid";
 
-
 const AddPost = ({navigation, userState}) => {
     const [location, setLocation] = useState("")
     const [description, setDescription] = useState("")
@@ -56,7 +55,7 @@ const AddPost = ({navigation, userState}) => {
 
     const uploadImage = async(response)=>{
         setImageUploading(true)
-        const reference = storage().ref(response.filename)
+        const reference = storage().ref(response.fileName)
         const task = reference.putFile(response.path)
         task.on("state_changed",(taskSnapshot)=>{
             const percentage = (taskSnapshot.bytesTransferred/taskSnapshot.totalBytes) *1000
@@ -72,6 +71,35 @@ const AddPost = ({navigation, userState}) => {
     }
 
     const addPost = async()=> {
+      try {
+        if (!location|| !description || !image) {
+          return Snackbar.show({
+            text: "Please Add All fields..",
+            textColor: "white",
+            backgroundColor:"red"
+          })
+        }
+        const uid = shortid.generate()
+        await database().ref(`/posts/${uid}`).set({
+          location,
+          description,
+          picture: image,
+          by: userState.name,
+          date: Date.now(),
+          instaId: userState.instaUserName,
+          userImage: userState.image,
+          id: uid
+        })
+        console.log("Post Added Successfully..");
+        navigation.navigate("Home")
+      } catch (error) {
+        console.log(error)
+        Snackbar.show=({
+          text: "post upload failed",
+          textColor: "white",
+          backgroundColor: "red"
+        })
+      }
     }
 
     return (
