@@ -18,7 +18,7 @@ import { SET_USER, IS_AUTHENTICATED } from "./action/action.types";
 
 import database from "@react-native-firebase/database";
 import EmptyContainer from "./components/EmptyContainer";
-import { signIn } from "./action/auth";
+// import { signIn } from "./action/auth";
 
 const Stack = createStackNavigator();
 
@@ -77,7 +77,7 @@ const App =({authState})=>{
           </>
         ):(
           <>
-          <Stack.Screen name="SignIn" component={SignUp}/>
+          <Stack.Screen name="SignIn" component={SignIn}/>
           <Stack.Screen name="SignUp" component={SignUp}/>
           </>
         )}
