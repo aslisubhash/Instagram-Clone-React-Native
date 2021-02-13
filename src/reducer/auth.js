@@ -1,11 +1,12 @@
-// import   {State } from "react-native-gesture-handler";
 import { SET_USER, IS_AUTHENTICATED } from "../action/action.types";
 
 const initialState = {
     user: null,
-    loading: true,
+loading: true,
     isAuthenticated: false
 };
+
+
 
 export default (state=initialState, action)=>{
     switch (action.type) {

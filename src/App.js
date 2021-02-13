@@ -15,7 +15,6 @@ import CustomHeader from "./layout/CustomHeader"
 import { requestPermission } from "./utils/AskPermission";
 
 import { SET_USER, IS_AUTHENTICATED } from "./action/action.types";
-
 import database from "@react-native-firebase/database";
 import EmptyContainer from "./components/EmptyContainer";
 // import { signIn } from "./action/auth";
