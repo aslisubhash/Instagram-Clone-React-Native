@@ -1,9 +1,7 @@
-import  React, {useState} from "react";
-import { StyleSheet, Image, TouchableOpacity, ScrollView } from "react-native";
+import React, {useState} from 'react'
+import {StyleSheet, ScrollView, Image, TouchableOpacity} from 'react-native'
 
-import Welcome from "../assets/undraw_welcome_cats_thqn.png";
-
-import { 
+import {
     Container,
     Form,
     Item,
@@ -11,20 +9,24 @@ import {
     Text,
     Button,
     H3
- } from "native-base";
+} from 'native-base'
 
-import { connect } from "react-redux";
-import { signIn } from "../action/auth";
-import propTypes from "prop-types";
+import Welcome from '../assets/undraw_welcome_cats_thqn.png'
+
+
+import {connect} from 'react-redux'
+import {signIn} from '../action/auth'
+import propTypes from 'prop-types'
 
 const SignIn = ({navigation, signIn}) => {
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
-    const doSignIn=() => {
+    const doSignIn = () => {
         signIn({email, password})
     }
+
 
     return (
         <Container style={styles.container}>
@@ -68,8 +70,9 @@ const SignIn = ({navigation, signIn}) => {
             </Form>
           </ScrollView>
         </Container>
-      )
+      );
 }
+
 const mapDispatchToProps = {
     signIn: (data) => signIn(data)
 }
@@ -78,7 +81,8 @@ SignIn.propTypes = {
     signIn: propTypes.func.isRequired
 }
 
-export default connect(null, mapDispatchToProps)(SignIn);
+
+export default connect(null, mapDispatchToProps)(SignIn)
 
 const styles = StyleSheet.create({
     container: {
@@ -96,3 +100,4 @@ const styles = StyleSheet.create({
       marginBottom: 20,
     },
   });
+  

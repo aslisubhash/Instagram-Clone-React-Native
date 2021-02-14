@@ -1,23 +1,24 @@
-import { PermissionsAndroid, ToastAndroid } from "react-native";
+import {PermissionsAndroid, ToastAndroid} from 'react-native'
 
 
-
-export const requestPermission =  async () => {
+export const requestPermission = async () => {
     try {
         const granted = await PermissionsAndroid.requestMultiple([
             PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-            PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE
+            PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
         ])
-        console.log(granted);
+        console.log(granted)
 
-        if (granted["PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE"]==="denied" ||
-        granted["PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE"]==="denied"
+        if (
+            granted['PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE'] === 'denied' ||
+            granted['PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE'] === 'denied'
         ) {
-            ToastAndroid.show("Permission Requiredto access", ToastAndroid.LONG)
+            ToastAndroid.show('We cannot procees without permissions', ToastAndroid.LONG)
             requestPermission()
         }
 
+
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 }
